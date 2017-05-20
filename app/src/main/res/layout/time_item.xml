@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+               android:layout_marginTop="50dp"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"
+                android:text="12:20"
+                android:id="@+id/time_startTime" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="14:40"
+                android:layout_marginTop="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/time_endTime" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="50dp"
+                android:textSize="15dp"
+                android:id="@+id/Time_item_kind"
+                android:layout_height="wrap_content"
+                android:text="英语2D"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="5号厅"
+                android:layout_marginTop="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/time_studioId" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="50dp"
+                android:textSize="18dp"
+                android:layout_height="wrap_content"
+                android:text="28元"
+                android:textColor="@color/colorAccent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="影城卡首单特惠"
+                android:layout_marginTop="100dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_dark" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="购票"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

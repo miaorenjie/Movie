@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:text="影院列表"-->
+            <!--android:textSize="35dp"/>-->
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/bt_Android"
+                android:text="Android"
+                android:layout_weight="1" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="iOS"
+                android:id="@+id/bt_iOS"
+                android:layout_weight="1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bt_Web"
+            android:text="Web"
+            android:layout_weight="1" />
+    </LinearLayout>
+        <android.support.v7.widget.SearchView
+            android:layout_width="match_parent"
+            android:id="@+id/Student_SearchView"
+            android:queryHint="姓名或学号"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/Cinema_List">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+

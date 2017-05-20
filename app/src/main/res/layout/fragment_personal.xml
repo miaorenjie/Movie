@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:id="@+id/me_layout_head"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/layout_me_backgrand_colorchange"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true">
+
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/home_people"
+            android:id="@+id/me_layout_head_image"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/me_layout_head_image"
+            android:id="@+id/me_layout_name_tips"
+            android:text="点击头像登陆"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/me_layout_body"
+        android:layout_below="@id/me_layout_head"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        >
+
+        <android.support.v7.view.menu.ListMenuItemView
+            android:id="@+id/me_layout_my_infomation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+
+            <ImageView
+                android:layout_marginStart="20dp"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:src="@drawable/me"
+                android:id="@+id/imageView"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="我的电影票"
+                android:textSize="15sp"
+                android:textColor="@color/primaryBlack"
+                android:gravity="center"
+                android:id="@+id/textView"
+                android:layout_marginLeft="20dp" />
+
+        </android.support.v7.view.menu.ListMenuItemView>
+
+        <android.support.v7.view.menu.ListMenuItemView
+            android:id="@+id/me_layout_my_caselist"
+            android:layout_below="@id/me_layout_my_infomation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:src="@drawable/caselist"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="我想看的电影"
+                android:textSize="15sp"
+                android:textColor="@color/primaryBlack"
+                android:gravity="center"
+                android:id="@+id/textView2"
+                android:layout_marginLeft="20dp" />
+
+        </android.support.v7.view.menu.ListMenuItemView>
+
+        <android.support.v7.view.menu.ListMenuItemView
+            android:id="@+id/me_layout_location_hospital"
+            android:layout_below="@id/me_layout_my_caselist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:src="@drawable/locator"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="我看过的电影"
+                android:textSize="15sp"
+                android:textColor="@color/primaryBlack"
+                android:gravity="center"
+                android:id="@+id/textView3"
+                android:layout_marginLeft="20dp" />
+
+        </android.support.v7.view.menu.ListMenuItemView>
+
+        <android.support.v7.view.menu.ListMenuItemView
+            android:id="@+id/me_layout_about_us"
+            android:layout_below="@id/me_layout_location_hospital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:src="@drawable/aboutus"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="关于软件"
+                android:textSize="15sp"
+                android:textColor="@color/primaryBlack"
+                android:gravity="center"
+                android:layout_marginLeft="20dp" />
+
+        </android.support.v7.view.menu.ListMenuItemView>
+
+        <android.support.v7.view.menu.ListMenuItemView
+            android:id="@+id/me_layout_exit"
+            android:layout_below="@id/me_layout_about_us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:src="@drawable/power"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="退出系统"
+                android:textSize="15sp"
+                android:textColor="@color/primaryBlack"
+                android:gravity="center"
+                android:layout_marginLeft="20dp" />
+
+        </android.support.v7.view.menu.ListMenuItemView>
+
+        <android.support.v7.view.menu.ListMenuItemView
+            android:id="@+id/me_layout_logout"
+            android:layout_below="@id/me_layout_exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:src="@drawable/exit"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="注销当前用户"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_marginLeft="20dp" />
+
+        </android.support.v7.view.menu.ListMenuItemView>
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
