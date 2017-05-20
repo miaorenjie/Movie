@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.miaojie.ptest.Activity.BuyTicketChooseCinemaActivity;
 import com.example.miaojie.ptest.Activity.ChoosSeatActivity;
 import com.example.miaojie.ptest.bean.MovieInfo;
 import com.example.miaojie.ptest.R;
@@ -90,7 +91,7 @@ public class RCadapter extends RecyclerView.Adapter {
         viewHolder.button_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, ChoosSeatActivity.class);
+                Intent intent=new Intent(context, BuyTicketChooseCinemaActivity.class);
                 intent.putExtra("MovieName",list.get(mPosition).getName());
                 context.startActivity(intent);
             }

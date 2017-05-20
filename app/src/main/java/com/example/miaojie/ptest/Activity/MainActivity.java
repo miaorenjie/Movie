@@ -48,53 +48,53 @@ public class MainActivity extends AppCompatActivity {
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
 
-        setContentView(R.layout.buyticket_choose_time_activity);
-        ChooseTimeAdapter adapter=new ChooseTimeAdapter(this);
-        recyclerView= (RecyclerView) findViewById(R.id.main_choose_time_recyclerView);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addItemDecoration(new RecycleViewDivider(this,RecyclerView.HORIZONTAL));
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        CinemaAdapter adapter=new CinemaAdapter(this);
-//
-//        adapter.setListener(new RCadapter.OnItemClickListener() {
-//            @Override
-//            public void OnItemClick(View view) {
-//                int position=recyclerView.getChildAdapterPosition(view);
-//                Log.e("sad",position+"");
-//            }
-//        });
-////
-////
-//        tabLayout= (TabLayout) findViewById(R.id.tablayout);
-//        tabLayout.setTabMode(TabLayout.MODE_FIXED);
-//
-//        viewPager= (ViewPager) findViewById(R.id.viewpager);
+        setContentView(R.layout.activity_main);
+//        ChooseTimeAdapter adapter=new ChooseTimeAdapter(this);
+//        recyclerView= (RecyclerView) findViewById(R.id.main_choose_time_recyclerView);
+//        recyclerView.setAdapter(adapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.addItemDecoration(new RecycleViewDivider(this,RecyclerView.HORIZONTAL));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        CinemaAdapter adapter=new CinemaAdapter(this);
+
+        adapter.setListener(new RCadapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view) {
+                int position=recyclerView.getChildAdapterPosition(view);
+                Log.e("sad",position+"");
+            }
+        });
 //
 //
-//        fragmentArrayList=new ArrayList<>();
-//        fragmentArrayList.add(new MoiveListFragment());
-//        fragmentArrayList.add(new CinemaFragment());
-//        fragmentArrayList.add(new PersonalFragment());
-//
-//        ArrayList<String> title=new ArrayList<>();
-//        title.add("电影");
-//        title.add("影院");
-//        title.add("个人信息");
-//        piclist=new ArrayList<>();
-//        piclist.add(R.mipmap.tab_movie_a);
-//        piclist.add(R.mipmap.cinema);
-//        piclist.add(R.mipmap.personal);
-//        VPadapter vPadapter=new VPadapter(getSupportFragmentManager(),fragmentArrayList,title,piclist,this);
-//        viewPager.setAdapter(vPadapter);
-//        tabLayout.setupWithViewPager(viewPager);
-//
-//        for (int i = 0; i < tabLayout.getTabCount(); i++) {
-//            TabLayout.Tab tab = tabLayout.getTabAt(i);
-//            tab.setCustomView(vPadapter.getTabView(i));
-//        }
+        tabLayout= (TabLayout) findViewById(R.id.tablayout);
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
+
+        viewPager= (ViewPager) findViewById(R.id.viewpager);
+
+
+        fragmentArrayList=new ArrayList<>();
+        fragmentArrayList.add(new MoiveListFragment());
+        fragmentArrayList.add(new CinemaFragment());
+        fragmentArrayList.add(new PersonalFragment());
+
+        ArrayList<String> title=new ArrayList<>();
+        title.add("电影");
+        title.add("影院");
+        title.add("个人信息");
+        piclist=new ArrayList<>();
+        piclist.add(R.mipmap.tab_movie_a);
+        piclist.add(R.mipmap.cinema);
+        piclist.add(R.mipmap.personal);
+        VPadapter vPadapter=new VPadapter(getSupportFragmentManager(),fragmentArrayList,title,piclist,this);
+        viewPager.setAdapter(vPadapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = tabLayout.getTabAt(i);
+            tab.setCustomView(vPadapter.getTabView(i));
+        }
 
 
     }

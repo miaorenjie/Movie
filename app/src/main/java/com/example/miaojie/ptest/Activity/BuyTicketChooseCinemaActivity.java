@@ -23,10 +23,12 @@ import java.util.ArrayList;
 public class BuyTicketChooseCinemaActivity extends Activity {
     private RecyclerView recyclerView;
     private ArrayList<CinemaInfo>cinemaInfos;
+    private String movieName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.buyticket_choose_cinema_activity);
+        movieName=getIntent().getStringExtra("MovieName");
         initCinemaInfo();
         recyclerView= (RecyclerView) findViewById(R.id.main_choose_cinema_recyclerView);
         ChooseCinemaAdapter adapter=new ChooseCinemaAdapter(this,cinemaInfos);
