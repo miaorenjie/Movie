@@ -50,6 +50,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/buy_ticket_button"
                     android:text="购买"
                     android:layout_centerInParent="true"/>
             </RelativeLayout>

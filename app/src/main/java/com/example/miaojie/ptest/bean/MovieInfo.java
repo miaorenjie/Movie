@@ -13,6 +13,15 @@ public class MovieInfo implements Serializable{
     public int CoverId;
     public String Protagonist;
     public int DetailedCover;
+    public float price;
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
 
     public int getDetailedCover() {
         return DetailedCover;
@@ -27,7 +36,7 @@ public class MovieInfo implements Serializable{
     }
 
     public void setProtagonist(String protagonist) {
-        Protagonist = "ä¸»æ¼”ï¼š"+protagonist;
+        Protagonist = "Ö÷ÑÝ£º"+protagonist;
     }
 
     public int getCoverId() {
@@ -52,7 +61,7 @@ public class MovieInfo implements Serializable{
     }
 
     public void setDirector(String director) {
-        Director = "å¯¼æ¼”ï¼š"+director;
+        Director = "µ¼ÑÝ£º"+director;
     }
 
     public String getName() {

@@ -36,6 +36,7 @@ public class BuyTicketChooseCinemaActivity extends Activity {
             @Override
             public void OnItemClick(View view) {
                 int position=recyclerView.getChildAdapterPosition(view);
+                MainActivity.orderInfo.setCinemaName(cinemaInfos.get(position).getCinema_Name());
                 Intent intent=new Intent(BuyTicketChooseCinemaActivity.this,BuyTicketChooseTimeActivity.class);
                 intent.putExtra("position",position);
                 startActivity(intent);

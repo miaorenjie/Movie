@@ -11,13 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.miaojie.ptest.Activity.ChoosSeatActivity;
 import com.example.miaojie.ptest.Activity.DetailedActivity;
+import com.example.miaojie.ptest.Activity.MainActivity;
 import com.example.miaojie.ptest.Adapter.RCadapter;
 import com.example.miaojie.ptest.bean.MovieInfo;
 import com.example.miaojie.ptest.R;
 import com.example.miaojie.ptest.Utils.RecycleViewDivider;
 
 import java.util.ArrayList;
+
+import static android.R.attr.order;
 
 /**
  * Created by miaojie on 2017/3/17.
@@ -42,6 +46,8 @@ public class MoiveListFragment extends Fragment {
             @Override
             public void OnItemClick(View view) {
                 int position=recyclerView.getChildAdapterPosition(view)-1;
+                MainActivity.orderInfo.setMovieName(list.get(position).getName());
+                MainActivity.orderInfo.setPrice(list.get(position).getPrice());
                 Intent intent=new Intent(getContext(), DetailedActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("MovieInfo",list.get(position));
@@ -62,9 +68,10 @@ public class MoiveListFragment extends Fragment {
         MovieInfo movie1=new MovieInfo();
         movie1.setCoverId(R.mipmap.movie_cover1);
         movie1.setDetailedCover(R.mipmap.movie_detailpic1);
-        movie1.setDirector("詹姆斯·曼高德");
-        movie1.setIntroduce("变种人大幅减少，X战警已经解散。身心疲惫的暮狼罗根自愈因子逐渐消失，整天饮酒度日，并靠当司机生活，他在墨西哥边境隐居照顾着饱受病痛折磨的查尔斯·泽维尔。突然有一天，一位陌生女子让罗根去载一个叫劳拉·金尼的女孩去加拿大边境，一开始罗根拒绝了，但查尔斯·泽维尔一直在等着这个女孩的出现，因为劳拉·金尼拥有超强的战斗力，而且在许多方面都很像金刚狼。她被一个强大公司的幕后人物所追踪，因为她的DNA里有着连接罗根的秘密，由此一场无休止的追捕开始");
-        movie1.setName("金刚狼3：殊死一战");
+        movie1.setDirector("ղķ˹�����ߵ�");
+        movie1.setIntroduce("�����˴�����٣�Xս���Ѿ���ɢ������ƣ����ĺ���޸�������������ʧ���������ƶ��գ�������˾���������ī����߾������չ��ű��ܲ�ʹ��ĥ�Ĳ��˹����ά����ͻȻ��һ�죬һλİ��Ů�����޸�ȥ��һ���������������Ů��ȥ���ô�߾���һ��ʼ�޸��ܾ��ˣ������˹����ά��һֱ�ڵ������Ů���ĳ��֣���Ϊ����������ӵ�г�ǿ��ս���������������෽�涼�������ǡ�����һ��ǿ��˾��Ļ��������׷�٣���Ϊ����DNA�����������޸������ܣ��ɴ�һ������ֹ��׷����ʼ");
+        movie1.setName("�����3������һս");
+        movie1.setPrice(28);
         list.add(movie1);
 
 //        MovieInfo movie3=new MovieInfo();
@@ -79,39 +86,43 @@ public class MoiveListFragment extends Fragment {
         MovieInfo movie2=new MovieInfo();
         movie2.setCoverId(R.mipmap.movie_cover2);
         movie2.setDetailedCover(R.mipmap.movie_detailpic2);
-        movie2.setDirector("亨利·朱斯特、阿里尔·舒曼");
-        movie2.setIntroduce("一款名为Nerve的真人大冒险直播游戏正席卷纽约城，游戏参与者有两个不同的选择，要么当“观看者”，要么当“玩家”，观看者付费决定玩家去挑战各种冒险游戏。\n" + "高中女生Vee（艾玛·罗伯茨饰）是个平凡无奇的乖乖女，平日最大的乐趣就是“窥视”学校里的男神JP。她的好友Sydney正沉迷于这个直播游戏里，为了吸引观看者而作出种种大胆行为。受其影响，平日习惯于当旁观者的Vee，也加入了这个直播游戏，成为了“玩家”。她的第一项冒险，就是亲吻一个陌生人。挑战成功后，她才发现这个陌生人Ian（戴夫·弗兰科饰）也是游戏玩家之一。他们俩的大冒险直播，从刚开始的好玩刺激，到逐渐走向失控。他们必须携手逃出这场玩命直播。");
-        movie2.setName("玩命直播");
-        movie2.setProtagonist("艾玛·罗伯茨，朱丽叶特·刘易斯，戴夫·弗兰科");
+        movie2.setDirector("��������˹�ء������������");
+        movie2.setIntroduce("һ����ΪNerve�����˴�ð��ֱ����Ϸ��ϯ��ŦԼ�ǣ���Ϸ��������������ͬ��ѡ��Ҫô�����ۿ��ߡ���Ҫô������ҡ����ۿ��߸��Ѿ������ȥ��ս����ð����Ϸ��\n" + "����Ů��Vee�����ꡤ�޲����Σ��Ǹ�ƽ������ĹԹ�Ů��ƽ��������Ȥ���ǡ����ӡ�ѧУ�������JP�����ĺ���Sydney�����������ֱ����Ϸ�Ϊ�������ۿ��߶��������ִ���Ϊ������Ӱ�죬ƽ��ϰ���ڵ��Թ��ߵ�Vee��Ҳ���������ֱ����Ϸ����Ϊ�ˡ���ҡ������ĵ�һ��ð�գ���������һ��İ���ˡ���ս�ɹ������ŷ������İ����Ian�����򡤸������Σ�Ҳ����Ϸ���֮һ���������Ĵ�ð��ֱ�����Ӹտ�ʼ�ĺ���̼�����������ʧ�ء����Ǳ���Я���ӳ��ⳡ����ֱ����");
+        movie2.setName("����ֱ��");
+        movie2.setProtagonist("���ꡤ�޲��ģ�����Ҷ�ء�����˹�����򡤸�����");
+        movie2.setPrice(28);
         list.add(movie2);
 
         MovieInfo movie3=new MovieInfo();
         movie3.setCoverId(R.mipmap.movie_cover3);
         movie3.setDetailedCover(R.mipmap.movie_detailpic3);
-        movie3.setName("奇异博士");
-        movie3.setDirector("斯科特·德瑞克森");
-        movie3.setProtagonist("本尼迪克特·康伯巴奇，切瓦特·埃加福特，瑞秋·麦克");
-        movie3.setIntroduce("《奇异博士》是由美国漫威影业制作，迪士尼影业公司出品的奇幻动作电影，由斯科特·德瑞克森执导,，本尼迪克特·康伯巴奇、切瓦特·埃加福特、瑞秋·麦克亚当斯、蒂尔达·斯文顿联合主演。\n" +
-                "该片讲述了神经外科医生史蒂芬·斯特兰奇在一次车祸中失去了双手的能力，最后在神秘的至尊魔法师的帮助下让他成为了拥有超凡魔力的奇异博士。\n" +
-                "该片于2016年11月4日以3D、IMAX 3D、中国巨幕3D版本在中国、美国同步上映");
+        movie3.setName("���첩ʿ");
+        movie3.setDirector("˹���ء������ɭ");
+        movie3.setProtagonist("����Ͽ��ء��������棬�����ء����Ӹ��أ�������");
+        movie3.setIntroduce("�����첩ʿ��������������Ӱҵ��������ʿ��Ӱҵ��˾��Ʒ����ö�����Ӱ����˹���ء������ɭִ��,������Ͽ��ء��������桢�����ء����Ӹ��ء��������ǵ�˹���ٶ��˹�Ķ��������ݡ�\n" +
+                "��Ƭ�����������ҽ��ʷ�ٷҡ�˹��������һ�γ�����ʧȥ��˫�ֵ���������������ص�����ħ��ʦ�İ�����������Ϊ��ӵ�г���ħ�������첩ʿ��\n" +
+                "��Ƭ��2016��11��4����3D��IMAX 3D���й���Ļ3D�汾���й�������ͬ����ӳ");
+        movie1.setPrice(28);
         list.add(movie3);
 
         MovieInfo movie4=new MovieInfo();
         movie4.setCoverId(R.mipmap.movie_cover4);
         movie4.setDetailedCover(R.mipmap.movie_detailpic4);
-        movie4.setName("驴得水");
-        movie4.setDirector("周申、刘露");
-        movie4.setProtagonist("任素汐 / 大力 / 刘帅良 / 裴魁山 / 阿如那 / ");
-        movie4.setIntroduce("一群“品行不端”却怀揣教育梦想的大学教师，从大城市来到偏远乡村开办了一所小学校。学校待遇惨淡、生活艰苦，但老师们都自得其乐，每天嘻嘻哈哈打成一片。然而教育部特派员要来突击检查的消息打破了安宁，因为学校有一位“驴得水老师”隐藏着不可告人的秘密。就在所有人都担心丑事即将败露的时候，一个神奇天才的出现拯救了大家，然而谁能料到真正的麻烦才刚刚开始……");
+        movie4.setName("¿��ˮ");
+        movie4.setDirector("���ꡢ��¶");
+        movie4.setProtagonist("����ϫ / ���� / ��˧�� / ���ɽ / ������ / ");
+        movie4.setIntroduce("һȺ��Ʒ�в��ˡ�ȴ������������Ĵ�ѧ��ʦ���Ӵ��������ƫԶ��忪����һ��СѧУ��ѧУ�����ҵ��������࣬����ʦ�Ƕ��Ե����֣�ÿ�������������һƬ��Ȼ������������ԱҪ��ͻ��������Ϣ�����˰�������ΪѧУ��һλ��¿��ˮ��ʦ�������Ų��ɸ��˵����ܡ����������˶����ĳ��¼�����¶��ʱ��һ��������ŵĳ��������˴�ң�Ȼ��˭���ϵ��������鷳�Ÿոտ�ʼ����");
+        movie4.setPrice(28);
         list.add(movie4);
 
         MovieInfo movie5=new MovieInfo();
         movie5.setCoverId(R.mipmap.movie_cover5);
         movie5.setDetailedCover(R.mipmap.movie_detailpic5);
-        movie5.setName("湄公河行动");
-        movie5.setDirector("林超贤");
-        movie5.setProtagonist("张涵予，彭于晏，冯文娟，吴旭东");
-        movie5.setIntroduce("2011年10月5日清晨，两艘中国商船在湄公河金三角流域遇袭，船上13名中国船员全部遇难，并在船上发现90万粒毒品。这宗枪杀十三名中国船员的血腥冤案，掀起了悲剧的序幕。面对矛头指向中国运毒、颠倒是非的舆论，为了还遇难同胞一个清白，中国决定派出缉毒精英，组成此次案件的特别行动小组，以高刚（张涵予饰）为队长，潜入金三角查明真相，竭力揪出案件的幕后黑手。然而缉拿真凶的过程并非他们想得那么简单，事件的进展扑朔迷离，通往真相的道路更是险象环生");
+        movie5.setName("�ع����ж�");
+        movie5.setDirector("�ֳ���");
+        movie5.setPrice(28);
+        movie5.setProtagonist("�ź��裬�����̣����ľ꣬����");
+        movie5.setIntroduce("2011��10��5���峿�������й��̴����ع��ӽ�����������Ϯ������13���й���Աȫ�����ѣ����ڴ��Ϸ���90������Ʒ������ǹɱʮ�����й���Ա��Ѫ��ԩ���������˱������Ļ�����ìͷָ���й��˶����ߵ��Ƿǵ����ۣ�Ϊ�˻�����ͬ��һ����ף��й������ɳ�������Ӣ����ɴ˴ΰ������ر��ж�С�飬�Ը߸գ��ź����Σ�Ϊ�ӳ���Ǳ������ǲ������࣬��������������Ļ����֡�Ȼ���������׵Ĺ��̲������������ô�򵥣��¼��Ľ�չ��˷���룬ͨ������ĵ�·����������");
         list.add(movie5);
     }
 

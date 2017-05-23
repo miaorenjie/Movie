@@ -49,7 +49,7 @@ public class SeatTable extends View {
     float lineNumberTxtHeight;
 
     /**
-     * è®¾ç½®è¡Œå· é»˜è®¤æ˜¾ç¤º 1,2,3....æ•°å­—
+     * ÉèÖÃĞĞºÅ Ä¬ÈÏÏÔÊ¾ 1,2,3....Êı×Ö
      * @param lineNumbers
      */
     public void setLineNumbers(ArrayList<String> lineNumbers) {
@@ -58,7 +58,7 @@ public class SeatTable extends View {
     }
 
     /**
-     * ç”¨æ¥ä¿å­˜æ‰€æœ‰è¡Œå·
+     * ÓÃÀ´±£´æËùÓĞĞĞºÅ
      */
     ArrayList<String> lineNumbers = new ArrayList<>();
 
@@ -66,42 +66,42 @@ public class SeatTable extends View {
     Matrix matrix = new Matrix();
 
     /**
-     * åº§ä½æ°´å¹³é—´è·
+     * ×ùÎ»Ë®Æ½¼ä¾à
      */
     int spacing;
 
     /**
-     * åº§ä½å‚ç›´é—´è·
+     * ×ùÎ»´¹Ö±¼ä¾à
      */
     int verSpacing;
 
     /**
-     * è¡Œå·å®½åº¦
+     * ĞĞºÅ¿í¶È
      */
     int numberWidth;
 
     /**
-     * è¡Œæ•°
+     * ĞĞÊı
      */
     int row;
 
     /**
-     * åˆ—æ•°
+     * ÁĞÊı
      */
     int column;
 
     /**
-     * å¯é€‰æ—¶åº§ä½çš„å›¾ç‰‡
+     * ¿ÉÑ¡Ê±×ùÎ»µÄÍ¼Æ¬
      */
     Bitmap seatBitmap;
 
     /**
-     * é€‰ä¸­æ—¶åº§ä½çš„å›¾ç‰‡
+     * Ñ¡ÖĞÊ±×ùÎ»µÄÍ¼Æ¬
      */
     Bitmap checkedSeatBitmap;
 
     /**
-     * åº§ä½å·²ç»å”®å‡ºæ—¶çš„å›¾ç‰‡
+     * ×ùÎ»ÒÑ¾­ÊÛ³öÊ±µÄÍ¼Æ¬
      */
     Bitmap seatSoldBitmap;
 
@@ -111,90 +111,90 @@ public class SeatTable extends View {
     int lastY;
 
     /**
-     * æ•´ä¸ªåº§ä½å›¾çš„å®½åº¦
+     * Õû¸ö×ùÎ»Í¼µÄ¿í¶È
      */
     int seatBitmapWidth;
 
     /**
-     * æ•´ä¸ªåº§ä½å›¾çš„é«˜åº¦
+     * Õû¸ö×ùÎ»Í¼µÄ¸ß¶È
      */
     int seatBitmapHeight;
 
     /**
-     * æ ‡è¯†æ˜¯å¦éœ€è¦ç»˜åˆ¶åº§ä½å›¾
+     * ±êÊ¶ÊÇ·ñĞèÒª»æÖÆ×ùÎ»Í¼
      */
     boolean isNeedDrawSeatBitmap = true;
 
     /**
-     * æ¦‚è§ˆå›¾ç™½è‰²æ–¹å—é«˜åº¦
+     * ¸ÅÀÀÍ¼°×É«·½¿é¸ß¶È
      */
     float rectHeight;
 
     /**
-     * æ¦‚è§ˆå›¾ç™½è‰²æ–¹å—çš„å®½åº¦
+     * ¸ÅÀÀÍ¼°×É«·½¿éµÄ¿í¶È
      */
     float rectWidth;
 
     /**
-     * æ¦‚è§ˆå›¾ä¸Šæ–¹å—çš„æ°´å¹³é—´è·
+     * ¸ÅÀÀÍ¼ÉÏ·½¿éµÄË®Æ½¼ä¾à
      */
     float overviewSpacing;
 
     /**
-     * æ¦‚è§ˆå›¾ä¸Šæ–¹å—çš„å‚ç›´é—´è·
+     * ¸ÅÀÀÍ¼ÉÏ·½¿éµÄ´¹Ö±¼ä¾à
      */
     float overviewVerSpacing;
 
     /**
-     * æ¦‚è§ˆå›¾çš„æ¯”ä¾‹
+     * ¸ÅÀÀÍ¼µÄ±ÈÀı
      */
     float overviewScale = 4.8f;
 
     /**
-     * è§å¹•é«˜åº¦
+     * Ó«Ä»¸ß¶È
      */
     float screenHeight;
 
     /**
-     * è§å¹•é»˜è®¤å®½åº¦ä¸åº§ä½å›¾çš„æ¯”ä¾‹
+     * Ó«Ä»Ä¬ÈÏ¿í¶ÈÓë×ùÎ»Í¼µÄ±ÈÀı
      */
     float screenWidthScale = 0.5f;
 
     /**
-     * è§å¹•æœ€å°å®½åº¦
+     * Ó«Ä»×îĞ¡¿í¶È
      */
     int defaultScreenWidth;
 
     /**
-     * æ ‡è¯†æ˜¯å¦æ­£åœ¨ç¼©æ”¾
+     * ±êÊ¶ÊÇ·ñÕıÔÚËõ·Å
      */
     boolean isScaling;
     float scaleX, scaleY;
 
     /**
-     * æ˜¯å¦æ˜¯ç¬¬ä¸€æ¬¡ç¼©æ”¾
+     * ÊÇ·ñÊÇµÚÒ»´ÎËõ·Å
      */
     boolean firstScale = true;
 
     /**
-     * æœ€å¤šå¯ä»¥é€‰æ‹©çš„åº§ä½æ•°é‡
+     * ×î¶à¿ÉÒÔÑ¡ÔñµÄ×ùÎ»ÊıÁ¿
      */
     int maxSelected = Integer.MAX_VALUE;
 
     private SeatChecker seatChecker;
 
     /**
-     * è§å¹•åç§°
+     * Ó«Ä»Ãû³Æ
      */
     private String screenName = "";
 
     /**
-     * æ•´ä¸ªæ¦‚è§ˆå›¾çš„å®½åº¦
+     * Õû¸ö¸ÅÀÀÍ¼µÄ¿í¶È
      */
     float rectW;
 
     /**
-     * æ•´ä¸ªæ¦‚è§ˆå›¾çš„é«˜åº¦
+     * Õû¸ö¸ÅÀÀÍ¼µÄ¸ß¶È
      */
     float rectH;
 
@@ -202,17 +202,17 @@ public class SeatTable extends View {
     Bitmap headBitmap;
 
     /**
-     * æ˜¯å¦ç¬¬ä¸€æ¬¡æ‰§è¡ŒonDraw
+     * ÊÇ·ñµÚÒ»´ÎÖ´ĞĞonDraw
      */
     boolean isFirstDraw = true;
 
     /**
-     * æ ‡è¯†æ˜¯å¦éœ€è¦ç»˜åˆ¶æ¦‚è§ˆå›¾
+     * ±êÊ¶ÊÇ·ñĞèÒª»æÖÆ¸ÅÀÀÍ¼
      */
     boolean isDrawOverview = false;
 
     /**
-     * æ ‡è¯†æ˜¯å¦éœ€è¦æ›´æ–°æ¦‚è§ˆå›¾
+     * ±êÊ¶ÊÇ·ñĞèÒª¸üĞÂ¸ÅÀÀÍ¼
      */
     boolean isDrawOverviewBitmap = true;
 
@@ -226,22 +226,22 @@ public class SeatTable extends View {
     boolean isOnClick;
 
     /**
-     * åº§ä½å·²å”®
+     * ×ùÎ»ÒÑÊÛ
      */
     private static final int SEAT_TYPE_SOLD = 1;
 
     /**
-     * åº§ä½å·²ç»é€‰ä¸­
+     * ×ùÎ»ÒÑ¾­Ñ¡ÖĞ
      */
     private static final int SEAT_TYPE_SELECTED = 2;
 
     /**
-     * åº§ä½å¯é€‰
+     * ×ùÎ»¿ÉÑ¡
      */
     private static final int SEAT_TYPE_AVAILABLE = 3;
 
     /**
-     * åº§ä½ä¸å¯ç”¨
+     * ×ùÎ»²»¿ÉÓÃ
      */
     private static final int SEAT_TYPE_NOT_AVAILABLE = 4;
 
@@ -249,7 +249,7 @@ public class SeatTable extends View {
     private boolean pointer;
 
     /**
-     * é¡¶éƒ¨é«˜åº¦,å¯é€‰,å·²é€‰,å·²å”®åŒºåŸŸçš„é«˜åº¦
+     * ¶¥²¿¸ß¶È,¿ÉÑ¡,ÒÑÑ¡,ÒÑÊÛÇøÓòµÄ¸ß¶È
      */
     float headHeight;
 
@@ -257,28 +257,28 @@ public class SeatTable extends View {
     RectF rectF;
 
     /**
-     * å¤´éƒ¨ä¸‹é¢æ¨ªçº¿çš„é«˜åº¦
+     * Í·²¿ÏÂÃæºáÏßµÄ¸ß¶È
      */
     int borderHeight = 1;
     Paint redBorderPaint;
 
     /**
-     * é»˜è®¤çš„åº§ä½å›¾å®½åº¦,å¦‚æœä½¿ç”¨çš„è‡ªå·±çš„åº§ä½å›¾ç‰‡æ¯”è¿™ä¸ªå°ºå¯¸å¤§æˆ–è€…å°,ä¼šç¼©æ”¾åˆ°è¿™ä¸ªå¤§å°
+     * Ä¬ÈÏµÄ×ùÎ»Í¼¿í¶È,Èç¹ûÊ¹ÓÃµÄ×Ô¼ºµÄ×ùÎ»Í¼Æ¬±ÈÕâ¸ö³ß´ç´ó»òÕßĞ¡,»áËõ·Åµ½Õâ¸ö´óĞ¡
      */
     private float defaultImgW = 40;
 
     /**
-     * é»˜è®¤çš„åº§ä½å›¾é«˜åº¦
+     * Ä¬ÈÏµÄ×ùÎ»Í¼¸ß¶È
      */
     private float defaultImgH = 34;
 
     /**
-     * åº§ä½å›¾ç‰‡çš„å®½åº¦
+     * ×ùÎ»Í¼Æ¬µÄ¿í¶È
      */
     private int seatWidth;
 
     /**
-     * åº§ä½å›¾ç‰‡çš„é«˜åº¦
+     * ×ùÎ»Í¼Æ¬µÄ¸ß¶È
      */
     private int seatHeight;
 
@@ -484,7 +484,7 @@ public class SeatTable extends View {
     };
 
     Bitmap drawHeadInfo() {
-        String txt = "å·²å”®";
+        String txt = "ÒÑÊÛ";
         float txtY = getBaseLine(headPaint, 0, headHeight);
         int txtWidth = (int) headPaint.measureText(txt);
         float spacing = dip2Px(10);
@@ -496,7 +496,7 @@ public class SeatTable extends View {
 
         Canvas canvas = new Canvas(bitmap);
 
-        //ç»˜åˆ¶èƒŒæ™¯
+        //»æÖÆ±³¾°
         canvas.drawRect(0, 0, getWidth(), headHeight, headPaint);
         headPaint.setColor(Color.BLACK);
 
@@ -504,21 +504,21 @@ public class SeatTable extends View {
         tempMatrix.setScale(xScale1,yScale1);
         tempMatrix.postTranslate(startX,(headHeight - seatHeight) / 2);
         canvas.drawBitmap(seatBitmap, tempMatrix, headPaint);
-        canvas.drawText("å¯é€‰", startX + seatWidth + spacing1, txtY, headPaint);
+        canvas.drawText("¿ÉÑ¡", startX + seatWidth + spacing1, txtY, headPaint);
 
         float soldSeatBitmapY = startX + seatBitmap.getWidth() + spacing1 + txtWidth + spacing;
         tempMatrix.setScale(xScale1,yScale1);
         tempMatrix.postTranslate(soldSeatBitmapY,(headHeight - seatHeight) / 2);
         canvas.drawBitmap(seatSoldBitmap, tempMatrix, headPaint);
-        canvas.drawText("å·²å”®", soldSeatBitmapY + seatWidth + spacing1, txtY, headPaint);
+        canvas.drawText("ÒÑÊÛ", soldSeatBitmapY + seatWidth + spacing1, txtY, headPaint);
 
         float checkedSeatBitmapX = soldSeatBitmapY + seatSoldBitmap.getWidth() + spacing1 + txtWidth + spacing;
         tempMatrix.setScale(xScale1,yScale1);
         tempMatrix.postTranslate(checkedSeatBitmapX,(headHeight - seatHeight) / 2);
         canvas.drawBitmap(checkedSeatBitmap, tempMatrix, headPaint);
-        canvas.drawText("å·²é€‰", checkedSeatBitmapX + spacing1 + seatWidth, txtY, headPaint);
+        canvas.drawText("ÒÑÑ¡", checkedSeatBitmapX + spacing1 + seatWidth, txtY, headPaint);
 
-        //ç»˜åˆ¶åˆ†å‰²çº¿
+        //»æÖÆ·Ö¸îÏß
         headPaint.setStrokeWidth(1);
         headPaint.setColor(Color.GRAY);
         canvas.drawLine(0, headHeight, getWidth(), headHeight, headPaint);
@@ -527,7 +527,7 @@ public class SeatTable extends View {
     }
 
     /**
-     * ç»˜åˆ¶ä¸­é—´å±å¹•
+     * »æÖÆÖĞ¼äÆÁÄ»
      */
     void drawScreen(Canvas canvas) {
         pathPaint.setStyle(Paint.Style.FILL);
@@ -632,15 +632,15 @@ public class SeatTable extends View {
     }
 
     /**
-     * ç»˜åˆ¶é€‰ä¸­åº§ä½çš„è¡Œå·åˆ—å·
+     * »æÖÆÑ¡ÖĞ×ùÎ»µÄĞĞºÅÁĞºÅ
      *
      * @param row
      * @param column
      */
     private void drawText(Canvas canvas, int row, int column, float top, float left) {
 
-        String txt = (row + 1) + "æ’";
-        String txt1 = (column + 1) + "åº§";
+        String txt = (row + 1) + "ÅÅ";
+        String txt1 = (column + 1) + "×ù";
 
         if(seatChecker!=null){
             String[] strings = seatChecker.checkedSeatTxt(row, column);
@@ -662,12 +662,12 @@ public class SeatTable extends View {
         float seatWidth = this.seatWidth * getMatrixScaleX();
         txtPaint.setTextSize(seatHeight / 3);
 
-        //è·å–ä¸­é—´çº¿
+        //»ñÈ¡ÖĞ¼äÏß
         float center = seatHeight / 2;
         float txtWidth = txtPaint.measureText(txt);
         float startX = left + seatWidth / 2 - txtWidth / 2;
 
-        //åªç»˜åˆ¶ä¸€è¡Œæ–‡å­—
+        //Ö»»æÖÆÒ»ĞĞÎÄ×Ö
         if(txt1==null){
             canvas.drawText(txt, startX, getBaseLine(txtPaint, top, top + seatHeight), txtPaint);
         }else {
@@ -683,7 +683,7 @@ public class SeatTable extends View {
     int bacColor = Color.parseColor("#7e000000");
 
     /**
-     * ç»˜åˆ¶è¡Œå·
+     * »æÖÆĞĞºÅ
      */
     void drawNumber(Canvas canvas) {
         long startTime = System.currentTimeMillis();
@@ -715,11 +715,11 @@ public class SeatTable extends View {
     }
 
     /**
-     * ç»˜åˆ¶æ¦‚è§ˆå›¾
+     * »æÖÆ¸ÅÀÀÍ¼
      */
     void drawOverview(Canvas canvas) {
 
-        //ç»˜åˆ¶çº¢è‰²æ¡†
+        //»æÖÆºìÉ«¿ò
         int left = (int) -getTranslateX();
         if (left < 0) {
             left = 0;
@@ -765,7 +765,7 @@ public class SeatTable extends View {
         overviewPaint.setStyle(Paint.Style.FILL);
         overviewBitmap.eraseColor(Color.TRANSPARENT);
         Canvas canvas = new Canvas(overviewBitmap);
-        //ç»˜åˆ¶é€æ˜ç°è‰²èƒŒæ™¯
+        //»æÖÆÍ¸Ã÷»ÒÉ«±³¾°
         canvas.drawRect(0, 0, rectW, rectH, overviewPaint);
 
         overviewPaint.setColor(Color.WHITE);
@@ -799,15 +799,15 @@ public class SeatTable extends View {
     }
 
     /**
-     * è‡ªåŠ¨å›å¼¹
-     * æ•´ä¸ªå¤§å°ä¸è¶…è¿‡æ§ä»¶å¤§å°çš„æ—¶å€™:
-     * å¾€å·¦è¾¹æ»‘åŠ¨,è‡ªåŠ¨å›å¼¹åˆ°è¡Œå·å³è¾¹
-     * å¾€å³è¾¹æ»‘åŠ¨,è‡ªåŠ¨å›å¼¹åˆ°å³è¾¹
-     * å¾€ä¸Š,ä¸‹æ»‘åŠ¨,è‡ªåŠ¨å›å¼¹åˆ°é¡¶éƒ¨
+     * ×Ô¶¯»Øµ¯
+     * Õû¸ö´óĞ¡²»³¬¹ı¿Ø¼ş´óĞ¡µÄÊ±ºò:
+     * Íù×ó±ß»¬¶¯,×Ô¶¯»Øµ¯µ½ĞĞºÅÓÒ±ß
+     * ÍùÓÒ±ß»¬¶¯,×Ô¶¯»Øµ¯µ½ÓÒ±ß
+     * ÍùÉÏ,ÏÂ»¬¶¯,×Ô¶¯»Øµ¯µ½¶¥²¿
      * <p>
-     * æ•´ä¸ªå¤§å°è¶…è¿‡æ§ä»¶å¤§å°çš„æ—¶å€™:
-     * å¾€å·¦ä¾§æ»‘åŠ¨,å›å¼¹åˆ°æœ€å³è¾¹,å¾€å³ä¾§æ»‘å›å¼¹åˆ°æœ€å·¦è¾¹
-     * å¾€ä¸Šæ»‘åŠ¨,å›å¼¹åˆ°åº•éƒ¨,å¾€ä¸‹æ»‘åŠ¨å›å¼¹åˆ°é¡¶éƒ¨
+     * Õû¸ö´óĞ¡³¬¹ı¿Ø¼ş´óĞ¡µÄÊ±ºò:
+     * Íù×ó²à»¬¶¯,»Øµ¯µ½×îÓÒ±ß,ÍùÓÒ²à»¬»Øµ¯µ½×î×ó±ß
+     * ÍùÉÏ»¬¶¯,»Øµ¯µ½µ×²¿,ÍùÏÂ»¬¶¯»Øµ¯µ½¶¥²¿
      */
     private void autoScroll() {
         float currentSeatBitmapWidth = seatBitmapWidth * getMatrixScaleX();
@@ -815,10 +815,10 @@ public class SeatTable extends View {
         float moveYLength = 0;
         float moveXLength = 0;
 
-        //å¤„ç†å·¦å³æ»‘åŠ¨çš„æƒ…å†µ
+        //´¦Àí×óÓÒ»¬¶¯µÄÇé¿ö
         if (currentSeatBitmapWidth < getWidth()) {
             if (getTranslateX() < 0 || getMatrixScaleX() < numberWidth + spacing) {
-                //è®¡ç®—è¦ç§»åŠ¨çš„è·ç¦»
+                //¼ÆËãÒªÒÆ¶¯µÄ¾àÀë
 
                 if (getTranslateX() < 0) {
                     moveXLength = (-getTranslateX()) + numberWidth + spacing;
@@ -832,11 +832,11 @@ public class SeatTable extends View {
             if (getTranslateX() < 0 && getTranslateX() + currentSeatBitmapWidth > getWidth()) {
 
             } else {
-                //å¾€å·¦ä¾§æ»‘åŠ¨
+                //Íù×ó²à»¬¶¯
                 if (getTranslateX() + currentSeatBitmapWidth < getWidth()) {
                     moveXLength = getWidth() - (getTranslateX() + currentSeatBitmapWidth);
                 } else {
-                    //å³ä¾§æ»‘åŠ¨
+                    //ÓÒ²à»¬¶¯
                     moveXLength = -getTranslateX() + numberWidth + spacing;
                 }
             }
@@ -845,7 +845,7 @@ public class SeatTable extends View {
 
         float startYPosition = screenHeight * getMatrixScaleY() + verSpacing * getMatrixScaleY() + headHeight + borderHeight;
 
-        //å¤„ç†ä¸Šä¸‹æ»‘åŠ¨
+        //´¦ÀíÉÏÏÂ»¬¶¯
         if (currentSeatBitmapHeight+headHeight < getHeight()) {
 
             if (getTranslateY() < startYPosition) {
@@ -859,7 +859,7 @@ public class SeatTable extends View {
             if (getTranslateY() < 0 && getTranslateY() + currentSeatBitmapHeight > getHeight()) {
 
             } else {
-                //å¾€ä¸Šæ»‘åŠ¨
+                //ÍùÉÏ»¬¶¯
                 if (getTranslateY() + currentSeatBitmapHeight < getHeight()) {
                     moveYLength = getHeight() - (getTranslateY() + currentSeatBitmapHeight);
                 } else {
@@ -1098,7 +1098,7 @@ public class SeatTable extends View {
                                 }
                             } else {
                                 if (selects.size() >= maxSelected) {
-                                    Toast.makeText(getContext(), "æœ€å¤šåªèƒ½é€‰æ‹©" + maxSelected + "ä¸ª", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "×î¶àÖ»ÄÜÑ¡Ôñ" + maxSelected + "¸ö", Toast.LENGTH_SHORT).show();
                                     return super.onSingleTapConfirmed(e);
                                 } else {
                                     addChooseSeat(i, j);
@@ -1143,7 +1143,7 @@ public class SeatTable extends View {
 
     public interface SeatChecker {
         /**
-         * æ˜¯å¦å¯ç”¨åº§ä½
+         * ÊÇ·ñ¿ÉÓÃ×ùÎ»
          *
          * @param row
          * @param column
@@ -1152,7 +1152,7 @@ public class SeatTable extends View {
         boolean isValidSeat(int row, int column);
 
         /**
-         * æ˜¯å¦å·²å”®
+         * ÊÇ·ñÒÑÊÛ
          *
          * @param row
          * @param column
@@ -1165,10 +1165,10 @@ public class SeatTable extends View {
         void unCheck(int row, int column);
 
         /**
-         * è·å–é€‰ä¸­ååº§ä½ä¸Šæ˜¾ç¤ºçš„æ–‡å­—
+         * »ñÈ¡Ñ¡ÖĞºó×ùÎ»ÉÏÏÔÊ¾µÄÎÄ×Ö
          * @param row
          * @param column
-         * @return è¿”å›2ä¸ªå…ƒç´ çš„æ•°ç»„,ç¬¬ä¸€ä¸ªå…ƒç´ æ˜¯ç¬¬ä¸€è¡Œçš„æ–‡å­—,ç¬¬äºŒä¸ªå…ƒç´ æ˜¯ç¬¬äºŒè¡Œæ–‡å­—,å¦‚æœåªè¿”å›ä¸€ä¸ªå…ƒç´ åˆ™ä¼šç»˜åˆ¶åˆ°åº§ä½å›¾çš„ä¸­é—´ä½ç½®
+         * @return ·µ»Ø2¸öÔªËØµÄÊı×é,µÚÒ»¸öÔªËØÊÇµÚÒ»ĞĞµÄÎÄ×Ö,µÚ¶ş¸öÔªËØÊÇµÚ¶şĞĞÎÄ×Ö,Èç¹ûÖ»·µ»ØÒ»¸öÔªËØÔò»á»æÖÆµ½×ùÎ»Í¼µÄÖĞ¼äÎ»ÖÃ
          */
         String[] checkedSeatTxt(int row,int column);
 

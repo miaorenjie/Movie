@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //    compile files('libs/mysql-connector-java-6.0.6-bin.jar')
+    compile files('libs/mysql-connector-java-6.0.6-bin.jar')
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

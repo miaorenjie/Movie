@@ -35,6 +35,7 @@
                     android:layout_width="match_parent"
                     android:background="@drawable/edit_sharp"
                     android:layout_marginRight="40dp"
+                    android:id="@+id/login_userName"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
@@ -52,6 +53,7 @@
                     android:layout_width="match_parent"
                     android:background="@drawable/edit_sharp"
                     android:layout_marginRight="40dp"
+                    android:id="@+id/login_passWord"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
@@ -71,6 +73,7 @@
                             android:background="@drawable/edit_sharp"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
+                            android:id="@+id/login_login"
                             android:layout_marginRight="10dp"
                             android:text="登录"/>
                     </RelativeLayout>
@@ -86,7 +89,8 @@
                         android:background="@drawable/edit_sharp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="登录"/>
+                        android:id="@+id/login_register"
+                        android:text="注册"/>
                 </LinearLayout>
 
             </LinearLayout>

@@ -37,6 +37,8 @@ public class BuyTicketChooseTimeActivity extends Activity {
             public void OnItemClick(View view) {
                 int position=recyclerView.getChildAdapterPosition(view);
                 Intent intent=new Intent(BuyTicketChooseTimeActivity.this,ChoosSeatActivity.class);
+                MainActivity.orderInfo.setStartTime(movieSessions.get(position).getStartTime());
+                MainActivity.orderInfo.setEndTime(movieSessions.get(position).getEndTime());
                 intent.putExtra("position",position);
                 startActivity(intent);
             }

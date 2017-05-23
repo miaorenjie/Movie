@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.miaojie.ptest.Activity.BuyTicketChooseCinemaActivity;
 import com.example.miaojie.ptest.Activity.ChoosSeatActivity;
+import com.example.miaojie.ptest.Activity.MainActivity;
 import com.example.miaojie.ptest.bean.MovieInfo;
 import com.example.miaojie.ptest.R;
 
@@ -92,6 +93,8 @@ public class RCadapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context, BuyTicketChooseCinemaActivity.class);
+                MainActivity.orderInfo.setMovieName(list.get(mPosition).getName());
+                MainActivity.orderInfo.setPrice(list.get(mPosition).getPrice());
                 intent.putExtra("MovieName",list.get(mPosition).getName());
                 context.startActivity(intent);
             }

@@ -37,7 +37,9 @@ public class DetailedActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailedActivity.this, ChoosSeatActivity.class);
+                Intent intent = new Intent(DetailedActivity.this, BuyTicketChooseCinemaActivity.class);
+                MainActivity.orderInfo.setMovieName(movieInfo.getName());
+                MainActivity.orderInfo.setPrice(movieInfo.getPrice());
                 intent.putExtra("MovieName", movieInfo.getName());
                 startActivity(intent);
             }

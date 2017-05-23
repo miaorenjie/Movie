@@ -29,12 +29,17 @@ import com.example.miaojie.ptest.Fragment.PersonalFragment;
 import com.example.miaojie.ptest.R;
 import com.example.miaojie.ptest.Utils.RecycleViewDivider;
 import com.example.miaojie.ptest.Utils.SeatTable;
+import com.example.miaojie.ptest.bean.OrderInfo;
+import com.example.miaojie.ptest.bean.UserInfo;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    public static OrderInfo orderInfo=new OrderInfo();
+    public static UserInfo userInfo;
+    public static boolean isLogin=false;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private RecyclerView recyclerView;
@@ -80,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
         fragmentArrayList.add(new PersonalFragment());
 
         ArrayList<String> title=new ArrayList<>();
-        title.add("鐢靛奖");
-        title.add("褰遍櫌");
-        title.add("涓汉淇℃伅");
+        title.add("电影");
+        title.add("影院");
+        title.add("个人信息");
         piclist=new ArrayList<>();
         piclist.add(R.mipmap.tab_movie_a);
         piclist.add(R.mipmap.cinema);
@@ -97,6 +102,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        userInfo= (UserInfo) getIntent().getSerializableExtra("userNickName");
     }
 
     @Override
