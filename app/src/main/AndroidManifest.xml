@@ -32,6 +32,9 @@
         <activity android:name=".Activity.LoginActivity">
 
         </activity>
+        <activity android:name=".Activity.RegisterActivity"></activity>
+        <activity android:name=".Activity.OrderInfoActivity"></activity>
+        <activity android:name=".Activity.WebViewActivity"></activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 </manifest>

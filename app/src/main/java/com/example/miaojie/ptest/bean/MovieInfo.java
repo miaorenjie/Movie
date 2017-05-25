@@ -14,6 +14,15 @@ public class MovieInfo implements Serializable{
     public String Protagonist;
     public int DetailedCover;
     public float price;
+    public String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public float getPrice() {
         return price;

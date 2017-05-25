@@ -1,5 +1,6 @@
 package com.example.miaojie.ptest.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.miaojie.ptest.Activity.LoginActivity;
 import com.example.miaojie.ptest.Activity.MainActivity;
+import com.example.miaojie.ptest.Activity.OrderInfoActivity;
 import com.example.miaojie.ptest.R;
 
 /**
@@ -30,12 +33,18 @@ public class PersonalFragment extends Fragment{
         userOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!MainActivity.isLogin)
-                {
-                    Toast.makeText(getContext(),"未登录，请先登录",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
+//                if(!MainActivity.isLogin)
+//                {
+//                    Toast.makeText(getContext(),"未登录，请先登录",Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+                startActivity(new Intent(getContext(), OrderInfoActivity.class));
+            }
+        });
+        userNickName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), LoginActivity.class));
             }
         });
         return view;

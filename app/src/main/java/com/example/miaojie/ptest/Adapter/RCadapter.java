@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.miaojie.ptest.Activity.BuyTicketChooseCinemaActivity;
 import com.example.miaojie.ptest.Activity.ChoosSeatActivity;
 import com.example.miaojie.ptest.Activity.MainActivity;
+import com.example.miaojie.ptest.Activity.WebViewActivity;
 import com.example.miaojie.ptest.bean.MovieInfo;
 import com.example.miaojie.ptest.R;
 
@@ -96,6 +97,14 @@ public class RCadapter extends RecyclerView.Adapter {
                 MainActivity.orderInfo.setMovieName(list.get(mPosition).getName());
                 MainActivity.orderInfo.setPrice(list.get(mPosition).getPrice());
                 intent.putExtra("MovieName",list.get(mPosition).getName());
+                context.startActivity(intent);
+            }
+        });
+        viewHolder.MovieCover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, WebViewActivity.class);
+                intent.putExtra("url",list.get(mPosition).getUrl());
                 context.startActivity(intent);
             }
         });

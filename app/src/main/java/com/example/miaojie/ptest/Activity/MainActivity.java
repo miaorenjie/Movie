@@ -18,6 +18,7 @@ import android.support.design.widget.TabLayout;
 import android.view.WindowManager;
 import android.webkit.WebView;
 
+import com.example.IndentMgr;
 import com.example.miaojie.ptest.Adapter.ChooseCinemaAdapter;
 import com.example.miaojie.ptest.Adapter.ChooseTimeAdapter;
 import com.example.miaojie.ptest.Adapter.CinemaAdapter;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         });
 //
 //
+
         tabLayout= (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
 

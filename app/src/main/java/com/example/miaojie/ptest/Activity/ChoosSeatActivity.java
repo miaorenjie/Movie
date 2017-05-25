@@ -1,11 +1,14 @@
 package com.example.miaojie.ptest.Activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.BridgeNative;
@@ -32,6 +35,7 @@ public class ChoosSeatActivity extends AppCompatActivity {
     private ArrayList<SeatInfo>seatInfos;
     private ArrayList<OrderInfo>orderInfos;
     private ArrayList<SeatInfo>chooseSeatInfos;
+    private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,23 +44,28 @@ public class ChoosSeatActivity extends AppCompatActivity {
         seatTableView.setScreenName("8号厅荧幕");//设置屏幕名称
         seatTableView.setMaxSelected(1000);//设置最多选中
         seatInfos=new ArrayList<>();
-        orderInfos=getOrderInfos();
+
         chooseSeatInfos=new ArrayList<>();
-        for(int i=0;i<orderInfos.size();i++)
-        {
-            if(isThisSession(orderInfos.get(i)))
-            {
-                for(int j=0;j<orderInfos.get(i).getSeatInfos().size();i++)
-                    seatInfos.add(orderInfos.get(i).getSeatInfos().get(j));
+        handler=new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                for(int i=0;i<orderInfos.size();i++)
+                {
+                    if(isThisSession(orderInfos.get(i)))
+                    {
+                        for(int j=0;j<orderInfos.get(i).getSeatInfos().size();i++)
+                            seatInfos.add(orderInfos.get(i).getSeatInfos().get(j));
+                    }
+                }
             }
-        }
+        };
+        getOrderInfos();
         seatTableView.setSeatChecker(new SeatTable.SeatChecker() {
 
             @Override
             public boolean isValidSeat(int row, int column) {
-                if(column==2) {
-                    return false;
-                }
+
                 return true;
             }
 
@@ -65,7 +74,7 @@ public class ChoosSeatActivity extends AppCompatActivity {
                 for(int i=0;i<seatInfos.size();i++)
                 {
                     SeatInfo seatInfo=seatInfos.get(i);
-                    if(seatInfo.getSeatY()==row&&seatInfo.getSeatX()==column)
+                    if(seatInfo.getSeatX()-1==row&&seatInfo.getSeatY()-1==column)
                         return true;
                 }
                 return false;
@@ -73,7 +82,7 @@ public class ChoosSeatActivity extends AppCompatActivity {
 
             @Override
             public void checked(int row, int column) {
-               chooseSeatInfos.add(new SeatInfo(column,row));
+               chooseSeatInfos.add(new SeatInfo(row+1,column+1));
             }
 
             @Override
@@ -82,7 +91,7 @@ public class ChoosSeatActivity extends AppCompatActivity {
                 for(i=0;i<chooseSeatInfos.size();i++)
                 {
                     SeatInfo seatInfo=chooseSeatInfos.get(i);
-                    if(seatInfo.getSeatY()==row&&seatInfo.getSeatX()==column)
+                    if(seatInfo.getSeatX()-1==row&&seatInfo.getSeatY()-1==column)
                         break;
                 }
                 chooseSeatInfos.remove(i);
@@ -111,6 +120,10 @@ public class ChoosSeatActivity extends AppCompatActivity {
         findViewById(R.id.buy_ticket_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!MainActivity.isLogin)
+                {
+                    Toast.makeText(ChoosSeatActivity.this,"请先登录",Toast.LENGTH_SHORT).show();
+                }
                 MainActivity.orderInfo.setSeatInfos(chooseSeatInfos);
                 MainActivity.orderInfo.setTicketNumber(chooseSeatInfos.size());
                 Date date=new Date();
@@ -132,27 +145,25 @@ public class ChoosSeatActivity extends AppCompatActivity {
                 Log.e("qwe",seats);
                 //add(String tickets, float money, String time, String studio_name, String move_name, String start, String end, String seats, String usrname)
 
-                    String finalSeats = seats;
-                    new Thread(){
-                        @Override
-                        public void run() {
-                            super.run();
-                            try {
-                                IndentMgr.add(MainActivity.orderInfo.getTicketNumber()+"",
-                                        MainActivity.orderInfo.getPrice(),
-                                        MainActivity.orderInfo.getBornTime(),
-                                        MainActivity.orderInfo.getCinemaName(),
-                                        MainActivity.orderInfo.getMovieName(),
-                                        MainActivity.orderInfo.getStartTime(),
-                                        MainActivity.orderInfo.getEndTime(),
-                                        finalSeats,
-                                        "123"
-                                );
-                            } catch (BridgeNative.DataCrashException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }.start();
+                String finalSeats = seats;
+                new Thread(){
+                    @Override
+                    public void run() {
+                        super.run();
+
+                            IndentMgr.add(MainActivity.orderInfo.getTicketNumber()+"",
+                                    MainActivity.orderInfo.getPrice(),
+                                    MainActivity.orderInfo.getBornTime(),
+                                    MainActivity.orderInfo.getCinemaName(),
+                                    MainActivity.orderInfo.getMovieName(),
+                                    MainActivity.orderInfo.getStartTime(),
+                                    MainActivity.orderInfo.getEndTime(),
+                                    finalSeats,
+                                    "123"
+                            );
+
+                    }
+                }.start();
 
 
             }
@@ -172,8 +183,46 @@ public class ChoosSeatActivity extends AppCompatActivity {
         return false;
     }
 
-    private ArrayList<OrderInfo> getOrderInfos()
+    private void getOrderInfos()
     {
-        return new ArrayList<>();
+        new Thread()
+        {
+            @Override
+            public void run() {
+                super.run();
+
+                Log.e("asd","读了");
+                    ArrayList<ArrayList>allOrderInfo=IndentMgr.get();
+                Log.e("asd","读了"+(allOrderInfo==null));
+                    for(int i=0;i<allOrderInfo.size();i++)
+                    {
+                        ArrayList<Object>temp=allOrderInfo.get(i);
+                        OrderInfo orderInfo=new OrderInfo();
+                        orderInfo.setOrderId((Integer) temp.get(0));
+                        orderInfo.setTicketNumber((Integer) temp.get(1));
+                        orderInfo.setPrice((Float) temp.get(2));
+                        orderInfo.setBornTime((String) temp.get(3));
+                        orderInfo.setCinemaName((String) temp.get(4));
+                        orderInfo.setMovieName((String) temp.get(5));
+                        orderInfo.setStartTime((String) temp.get(6));
+                        orderInfo.setEndTime((String) temp.get(7));
+                        ArrayList<SeatInfo>seatInfos=new ArrayList<>();
+                        String seats=(String) temp.get(8);
+                        Log.e("座位信息",seats);
+                        String[]eachSeat=seats.split(",");
+                        for(int j=0;j<eachSeat.length;j++)
+                        {
+                            String[]oneSeat=eachSeat[j].split(" ");
+                            SeatInfo seatInfo=new SeatInfo(Integer.parseInt(oneSeat[0]),Integer.parseInt(oneSeat[1]));
+                            seatInfos.add(seatInfo);
+                        }
+                        orderInfo.setSeatInfos(seatInfos);
+                        orderInfo.setUserName((String) temp.get(9));
+                        orderInfos.add(orderInfo);
+                    }
+                    handler.sendMessage(new Message());
+
+            }
+        }.start();
     }
 }

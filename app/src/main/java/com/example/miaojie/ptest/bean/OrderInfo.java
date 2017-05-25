@@ -7,10 +7,10 @@ import java.util.ArrayList;
  */
 
 public class OrderInfo {
-    private UserInfo userInfo;
+    private String userName;
     private String movieName;
     private String cinemaName;
-    private String orderId;
+    private int orderId;
     private int ticketNumber;
     private float price;
     private ArrayList<SeatInfo>seatInfos;
@@ -26,12 +26,12 @@ public class OrderInfo {
         this.bornTime = bornTime;
     }
 
-    public UserInfo getUserInfo() {
-        return userInfo;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Override
@@ -79,11 +79,11 @@ public class OrderInfo {
         this.cinemaName = cinemaName;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 

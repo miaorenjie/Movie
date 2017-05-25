@@ -78,94 +78,94 @@ public class CinemaFragment extends Fragment implements View.OnClickListener{
         bt_iOS= (Button) view.findViewById(R.id.bt_iOS);
         bt_Web= (Button) view.findViewById(R.id.bt_Web);
         searchView= (SearchView) view.findViewById(R.id.Student_SearchView);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                Log.e("asd",newText);
-                SearchList.clear();
-                switch (choose_flag)
-                {
-                    case FLAG_ANDROID:
-                        Log.e("asd","FLAG_ANDROID");
-                        for(int i=0;i<AndroidList.size();i++)
-                        {
-                            if (AndroidList.get(i).getStudentName().contains(newText)||
-                                    AndroidList.get(i).getStudentNum().contains(newText)||
-                                    AndroidList.get(i).getStudentState().contains(newText)||
-                                    AndroidList.get(i).getStudentSex().contains(newText))
-                            {
-                                SearchList.add(AndroidList.get(i));
-                                Log.e("asd","setList"+SearchList.size());
-                            }
-
-
-                        }
-                        if (SearchList.size()>0||newText.length()>0)
-                        {
-                            Log.e("asd","setList"+SearchList.size());
-                            adapter.setList(SearchList);
-                            recyclerView.setAdapter(adapter);
-                        }
-                        if(newText.length()==0)
-                        {
-                            adapter.setList(AndroidList);
-                            recyclerView.setAdapter(adapter);
-                        }
-
-                        break;
-                    case FLAG_IOS:
-                        for(int i=0;i<iOSList.size();i++)
-                        {
-                            if (iOSList.get(i).getStudentName().contains(newText)||
-                                    iOSList.get(i).getStudentNum().contains(newText)||
-                                    iOSList.get(i).getStudentState().contains(newText)||iOSList.get(i).getStudentSex().contains(newText))
-                                SearchList.add(iOSList.get(i));
-
-                        }
-                        if (SearchList.size()>0||newText.length()>0)
-                        {
-                            adapter.setList(SearchList);
-                            recyclerView.setAdapter(adapter);
-                        }
-                        if(newText.length()==0)
-                        {
-                            adapter.setList(iOSList);
-                            recyclerView.setAdapter(adapter);
-                        }
-                        break;
-                    case FLAG_WEB:
-                        for(int i=0;i<WebList.size();i++)
-                        {
-                            if (WebList.get(i).getStudentName().contains(newText)||
-                                    WebList.get(i).getStudentNum().contains(newText)||
-                                    WebList.get(i).getStudentState().contains(newText)||
-                                    WebList.get(i).getStudentSex().contains(newText))
-                                SearchList.add(WebList.get(i));
-
-                        }
-                        if (SearchList.size()>0||newText.length()>0)
-                        {
-                            adapter.setList(SearchList);
-                            recyclerView.setAdapter(adapter);
-                        }
-                        if(newText.length()==0)
-                        {
-                            adapter.setList(WebList);
-                            recyclerView.setAdapter(adapter);
-                        }
-                        break;
-
-                }
-
-
-                return false;
-            }
-        });
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                Log.e("asd",newText);
+//                SearchList.clear();
+//                switch (choose_flag)
+//                {
+//                    case FLAG_ANDROID:
+//                        Log.e("asd","FLAG_ANDROID");
+//                        for(int i=0;i<AndroidList.size();i++)
+//                        {
+//                            if (AndroidList.get(i).getStudentName().contains(newText)||
+//                                    AndroidList.get(i).getStudentNum().contains(newText)||
+//                                    AndroidList.get(i).getStudentState().contains(newText)||
+//                                    AndroidList.get(i).getStudentSex().contains(newText))
+//                            {
+//                                SearchList.add(AndroidList.get(i));
+//                                Log.e("asd","setList"+SearchList.size());
+//                            }
+//
+//
+//                        }
+//                        if (SearchList.size()>0||newText.length()>0)
+//                        {
+//                            Log.e("asd","setList"+SearchList.size());
+//                            adapter.setList(SearchList);
+//                            recyclerView.setAdapter(adapter);
+//                        }
+//                        if(newText.length()==0)
+//                        {
+//                            adapter.setList(AndroidList);
+//                            recyclerView.setAdapter(adapter);
+//                        }
+//
+//                        break;
+//                    case FLAG_IOS:
+//                        for(int i=0;i<iOSList.size();i++)
+//                        {
+//                            if (iOSList.get(i).getStudentName().contains(newText)||
+//                                    iOSList.get(i).getStudentNum().contains(newText)||
+//                                    iOSList.get(i).getStudentState().contains(newText)||iOSList.get(i).getStudentSex().contains(newText))
+//                                SearchList.add(iOSList.get(i));
+//
+//                        }
+//                        if (SearchList.size()>0||newText.length()>0)
+//                        {
+//                            adapter.setList(SearchList);
+//                            recyclerView.setAdapter(adapter);
+//                        }
+//                        if(newText.length()==0)
+//                        {
+//                            adapter.setList(iOSList);
+//                            recyclerView.setAdapter(adapter);
+//                        }
+//                        break;
+//                    case FLAG_WEB:
+//                        for(int i=0;i<WebList.size();i++)
+//                        {
+//                            if (WebList.get(i).getStudentName().contains(newText)||
+//                                    WebList.get(i).getStudentNum().contains(newText)||
+//                                    WebList.get(i).getStudentState().contains(newText)||
+//                                    WebList.get(i).getStudentSex().contains(newText))
+//                                SearchList.add(WebList.get(i));
+//
+//                        }
+//                        if (SearchList.size()>0||newText.length()>0)
+//                        {
+//                            adapter.setList(SearchList);
+//                            recyclerView.setAdapter(adapter);
+//                        }
+//                        if(newText.length()==0)
+//                        {
+//                            adapter.setList(WebList);
+//                            recyclerView.setAdapter(adapter);
+//                        }
+//                        break;
+//
+//                }
+//
+//
+//                return false;
+//            }
+//        });
         bt_Android.setOnClickListener(this);
         bt_iOS.setOnClickListener(this);
         bt_Web.setOnClickListener(this);
