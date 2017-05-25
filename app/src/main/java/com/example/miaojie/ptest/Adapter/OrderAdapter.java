@@ -35,10 +35,16 @@ public class OrderAdapter extends RecyclerView.Adapter{
         this.context = context;
     }
 
+    public OrderAdapter(Context context,ArrayList<OrderInfo> orderInfos ) {
+        this.orderInfos = orderInfos;
+        this.context = context;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(R.layout.order_item,parent,false);
-
+        if (listener!=null)
+            listener.OnItemClick(view);
         return new OrderHolder(view);
     }
 

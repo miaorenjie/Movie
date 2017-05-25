@@ -71,9 +71,12 @@ public class ChoosSeatActivity extends AppCompatActivity {
 
             @Override
             public boolean isSold(int row, int column) {
+                Log.e("座位信息",seatInfos.size()+"");
                 for(int i=0;i<seatInfos.size();i++)
                 {
+
                     SeatInfo seatInfo=seatInfos.get(i);
+                    Log.e("选择座位",seatInfo.getSeatX()+"--"+row);
                     if(seatInfo.getSeatX()-1==row&&seatInfo.getSeatY()-1==column)
                         return true;
                 }
@@ -123,15 +126,16 @@ public class ChoosSeatActivity extends AppCompatActivity {
                 if(!MainActivity.isLogin)
                 {
                     Toast.makeText(ChoosSeatActivity.this,"请先登录",Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 MainActivity.orderInfo.setSeatInfos(chooseSeatInfos);
-                MainActivity.orderInfo.setTicketNumber(chooseSeatInfos.size());
+                MainActivity.orderInfo.setTicketNumber(chooseSeatInfos.size()+"");
                 Date date=new Date();
                 SimpleDateFormat simpleDateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String now=simpleDateFormat.format(date);
                 MainActivity.orderInfo.setBornTime(now);
                 OrderInfo orderInfo= MainActivity.orderInfo;
-                Log.e("asd",MainActivity.orderInfo.toString());
+                Log.e("Mainac",MainActivity.orderInfo.toString());
                 String seats="";
                 for(int i=0;i<chooseSeatInfos.size();i++)
                 {
@@ -190,16 +194,19 @@ public class ChoosSeatActivity extends AppCompatActivity {
             @Override
             public void run() {
                 super.run();
+                orderInfos=new ArrayList<OrderInfo>();
 
                 Log.e("asd","读了");
-                    ArrayList<ArrayList>allOrderInfo=IndentMgr.get();
+                ArrayList<ArrayList>allOrderInfo=IndentMgr.get();
+                if(allOrderInfo==null)
+                    return;
                 Log.e("asd","读了"+(allOrderInfo==null));
                     for(int i=0;i<allOrderInfo.size();i++)
                     {
                         ArrayList<Object>temp=allOrderInfo.get(i);
                         OrderInfo orderInfo=new OrderInfo();
-                        orderInfo.setOrderId((Integer) temp.get(0));
-                        orderInfo.setTicketNumber((Integer) temp.get(1));
+                   //     orderInfo.setOrderId((Integer) temp.get(0));
+                        orderInfo.setTicketNumber((String) temp.get(1));
                         orderInfo.setPrice((Float) temp.get(2));
                         orderInfo.setBornTime((String) temp.get(3));
                         orderInfo.setCinemaName((String) temp.get(4));
@@ -208,7 +215,7 @@ public class ChoosSeatActivity extends AppCompatActivity {
                         orderInfo.setEndTime((String) temp.get(7));
                         ArrayList<SeatInfo>seatInfos=new ArrayList<>();
                         String seats=(String) temp.get(8);
-                        Log.e("座位信息",seats);
+                        Log.e("座位信息",seats+"---");
                         String[]eachSeat=seats.split(",");
                         for(int j=0;j<eachSeat.length;j++)
                         {

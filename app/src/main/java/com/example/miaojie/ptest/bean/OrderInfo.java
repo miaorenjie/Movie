@@ -11,7 +11,7 @@ public class OrderInfo {
     private String movieName;
     private String cinemaName;
     private int orderId;
-    private int ticketNumber;
+    private String ticketNumber;
     private float price;
     private ArrayList<SeatInfo>seatInfos;
     private String startTime;
@@ -87,11 +87,11 @@ public class OrderInfo {
         this.orderId = orderId;
     }
 
-    public int getTicketNumber() {
+    public String getTicketNumber() {
         return ticketNumber;
     }
 
-    public void setTicketNumber(int ticketNumber) {
+    public void setTicketNumber(String ticketNumber) {
         this.ticketNumber = ticketNumber;
     }
 

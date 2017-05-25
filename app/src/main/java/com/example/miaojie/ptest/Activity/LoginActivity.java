@@ -84,6 +84,7 @@ public class LoginActivity extends Activity {
                         currentUserInfo.setUserPassWord(passWord.getText().toString());
                         message.what=2;
                         message.obj=currentUserInfo;
+                        handler.sendMessage(message);
                     }
                 }.start();
 
