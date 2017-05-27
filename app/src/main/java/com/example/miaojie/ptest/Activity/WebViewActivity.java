@@ -17,7 +17,10 @@ public class WebViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.webview_activity);
         webView= (WebView) findViewById(R.id.WebView);
+        
         String url=getIntent().getStringExtra("url");
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
+
     }
 }

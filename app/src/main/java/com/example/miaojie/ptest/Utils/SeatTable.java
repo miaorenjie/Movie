@@ -909,9 +909,10 @@ public class SeatTable extends View {
         return Collections.binarySearch(selects, seat);
     }
 
-    private void remove(int index) {
+    public void remove(int index) {
         selects.remove(index);
     }
+    public void removeAll(){selects.clear();}
 
     float[] m = new float[9];
 

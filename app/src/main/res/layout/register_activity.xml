@@ -95,7 +95,7 @@
                             android:layout_alignParentRight="true"
                             android:id="@+id/registerRegister"
                             android:layout_marginRight="10dp"
-                            android:text="登录"/>
+                            android:text="注册"/>
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -129,12 +129,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
     </LinearLayout>
-    <com.example.miaojie.ptest.View.CircleImageView
+    <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="125dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/tou"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

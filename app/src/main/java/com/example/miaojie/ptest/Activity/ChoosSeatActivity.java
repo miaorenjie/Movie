@@ -1,11 +1,13 @@
 package com.example.miaojie.ptest.Activity;
 
+import android.app.Instrumentation;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,10 +56,11 @@ public class ChoosSeatActivity extends AppCompatActivity {
                 {
                     if(isThisSession(orderInfos.get(i)))
                     {
-                        for(int j=0;j<orderInfos.get(i).getSeatInfos().size();i++)
+                        for(int j=0;j<orderInfos.get(i).getSeatInfos().size();j++)
                             seatInfos.add(orderInfos.get(i).getSeatInfos().get(j));
                     }
                 }
+                seatTableView.invalidate();
             }
         };
         getOrderInfos();
@@ -163,17 +166,24 @@ public class ChoosSeatActivity extends AppCompatActivity {
                                     MainActivity.orderInfo.getStartTime(),
                                     MainActivity.orderInfo.getEndTime(),
                                     finalSeats,
-                                    "123"
+                                    MainActivity.userInfo.getUserName()
                             );
 
                     }
-                }.start();
 
+                }.start();
+                for(int i=0;i<chooseSeatInfos.size();i++)
+                    seatInfos.add(chooseSeatInfos.get(i));
+                chooseSeatInfos.clear();
+                seatTableView.removeAll();
+                seatTableView.invalidate();
+
+                Toast.makeText(ChoosSeatActivity.this, "¹ºÂò³É¹¦", Toast.LENGTH_SHORT).show();
 
             }
         });
         textView= (TextView) findViewById(R.id.Seat_Movie_Name);
-//        textView.setText(getIntent().getStringExtra("MovieName"));
+        textView.setText(getIntent().getStringExtra("MovieName"));
 
 //        toolbar.setNavigationOnClickListener();
     }

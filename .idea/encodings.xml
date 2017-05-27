@@ -4,14 +4,23 @@
     <file url="file://$PROJECT_DIR$/app" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/build.gradle" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/libs/ttmsnative.jar" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/libs/ttmsnative.jar" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/proguard-rules.pro" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/miaojie/ptest/Activity/ChoosSeatActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/miaojie/ptest/Activity/MainActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/miaojie/ptest/Activity/OrderInfoActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/miaojie/ptest/Adapter/BBSAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/miaojie/ptest/Fragment/BBSFragment.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/miaojie/ptest/Fragment/MoiveListFragment.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/miaojie/ptest/Fragment/PersonalFragment.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/miaojie/ptest/Utils/SeatTable.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/miaojie/ptest/bean/MovieInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/button_shape.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/content_shape.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/edit_shape.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/tou.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/touxiang_shape.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/bbs_content.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/text_content.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/build.gradle" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

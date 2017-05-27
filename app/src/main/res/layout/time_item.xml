@@ -95,6 +95,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/Time_item_buy"
+                android:background="@drawable/edit_sharp"
                 android:text="购票"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>

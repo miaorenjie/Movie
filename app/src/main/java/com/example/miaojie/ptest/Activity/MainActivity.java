@@ -18,12 +18,14 @@ import android.support.design.widget.TabLayout;
 import android.view.WindowManager;
 import android.webkit.WebView;
 
+import com.example.BBS;
 import com.example.IndentMgr;
 import com.example.miaojie.ptest.Adapter.ChooseCinemaAdapter;
 import com.example.miaojie.ptest.Adapter.ChooseTimeAdapter;
 import com.example.miaojie.ptest.Adapter.CinemaAdapter;
 import com.example.miaojie.ptest.Adapter.RCadapter;
 import com.example.miaojie.ptest.Adapter.VPadapter;
+import com.example.miaojie.ptest.Fragment.BBSFragment;
 import com.example.miaojie.ptest.Fragment.CinemaFragment;
 import com.example.miaojie.ptest.Fragment.MoiveListFragment;
 import com.example.miaojie.ptest.Fragment.PersonalFragment;
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     private SeatTable seatTableView;
     private ArrayList<Fragment>fragmentArrayList;
     private ArrayList<Integer>piclist;
+    private ArrayList<String> title;
+    private BBSFragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,16 +66,6 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.addItemDecoration(new RecycleViewDivider(this,RecyclerView.HORIZONTAL));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        CinemaAdapter adapter=new CinemaAdapter(this);
-
-        adapter.setListener(new RCadapter.OnItemClickListener() {
-            @Override
-            public void OnItemClick(View view) {
-                int position=recyclerView.getChildAdapterPosition(view);
-                Log.e("sad",position+"");
-            }
-        });
 //
 //
 
@@ -82,18 +76,39 @@ public class MainActivity extends AppCompatActivity {
 
 
         fragmentArrayList=new ArrayList<>();
-        fragmentArrayList.add(new MoiveListFragment());
-        fragmentArrayList.add(new CinemaFragment());
-        fragmentArrayList.add(new PersonalFragment());
 
-        ArrayList<String> title=new ArrayList<>();
+
+
+        title=new ArrayList<>();
         title.add("电影");
-        title.add("影院");
+        title.add("讨论版");
         title.add("个人信息");
         piclist=new ArrayList<>();
         piclist.add(R.mipmap.tab_movie_a);
         piclist.add(R.mipmap.cinema);
         piclist.add(R.mipmap.personal);
+
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        userInfo= (UserInfo) getIntent().getSerializableExtra("userInfo");
+        BBSFragment fragment=new BBSFragment();
+        fragment.name="";
+        if(userInfo!=null) {
+            fragment.name = userInfo.getUserNickName();
+            Log.e("NickName",userInfo.getUserNickName());
+        }
+        if(fragmentArrayList.size()<3)
+        {
+            fragmentArrayList.add(new MoiveListFragment());
+            fragmentArrayList.add(new BBSFragment());
+            fragmentArrayList.add(new PersonalFragment());
+        }
+
         VPadapter vPadapter=new VPadapter(getSupportFragmentManager(),fragmentArrayList,title,piclist,this);
         viewPager.setAdapter(vPadapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -104,12 +119,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        userInfo= (UserInfo) getIntent().getSerializableExtra("userNickName");
+        Log.e("onStart",(userInfo==null)+"--"+(getIntent().getSerializableExtra("userInfo")==null));
     }
 
     @Override

@@ -1,12 +1,17 @@
 package com.example.miaojie.ptest.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.miaojie.ptest.Activity.BuyTicketChooseTimeActivity;
+import com.example.miaojie.ptest.Activity.ChoosSeatActivity;
+import com.example.miaojie.ptest.Activity.MainActivity;
 import com.example.miaojie.ptest.R;
 import com.example.miaojie.ptest.bean.MovieSession;
 
@@ -20,6 +25,11 @@ public class ChooseTimeAdapter extends RecyclerView.Adapter {
     private Context context;
     private RecyclerViewItemOnClickListener onClickListener;
     private ArrayList<MovieSession>arrayList;
+    private String movieName;
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
 
     public ChooseTimeAdapter(Context context) {
         this.context = context;
@@ -57,6 +67,17 @@ public class ChooseTimeAdapter extends RecyclerView.Adapter {
         myHolder.startTime.setText(arrayList.get(position).getStartTime());
         myHolder.endTime.setText(arrayList.get(position).getEndTime());
         myHolder.studioId.setText(arrayList.get(position).getStudioId());
+        myHolder.buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context,ChoosSeatActivity.class);
+                MainActivity.orderInfo.setStartTime(arrayList.get(position).getStartTime());
+                MainActivity.orderInfo.setEndTime(arrayList.get(position).getEndTime());
+                intent.putExtra("position",position);
+                intent.putExtra("MovieName",movieName);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -69,12 +90,14 @@ public class ChooseTimeAdapter extends RecyclerView.Adapter {
         public TextView startTime;
         public TextView endTime;
         public TextView studioId;
+        public Button buy;
         public MyHolder(View itemView) {
             super(itemView);
             view=itemView;
             startTime= (TextView) view.findViewById(R.id.time_startTime);
             endTime= (TextView) view.findViewById(R.id.time_endTime);
             studioId= (TextView) view.findViewById(R.id.time_studioId);
+            buy= (Button) view.findViewById(R.id.Time_item_buy);
         }
     }
 }

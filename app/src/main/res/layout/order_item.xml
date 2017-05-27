@@ -57,6 +57,8 @@
             android:layout_width="match_parent"
             android:paddingTop="20dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/edit_sharp"
             android:text="删除"
             android:id="@+id/order_item_delete"/>
     </LinearLayout>

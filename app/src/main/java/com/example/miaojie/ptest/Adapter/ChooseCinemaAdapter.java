@@ -59,7 +59,7 @@ public class ChooseCinemaAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 20;
+        return arrayList.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{

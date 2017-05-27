@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,8 +53,15 @@ public class LoginActivity extends Activity {
                         MainActivity.isLogin=true;
                         Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                         intent.putExtra("userInfo",(UserInfo)msg.obj);
+                        Log.e("登录",(((UserInfo) msg.obj).getUserNickName()));
+//                        UserInfo userInfo=(UserInfo)msg.obj;
+//
+//                        MainActivity.userInfo.setUserName(userInfo.getUserName());
+//                        MainActivity.userInfo.setUserNickName(userInfo.getUserNickName());
+//                        MainActivity.userInfo.setUserPassWord(userInfo.getUserPassWord());
                         Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                         startActivity(intent);
+                        LoginActivity.this.finish();
                         break;
                 }
             }
@@ -72,8 +82,9 @@ public class LoginActivity extends Activity {
 
 //                if(userName.getText().toString().equals(userInfos.get(i).getUserName())&&
 //                            passWord.getText().toString().equals(userInfos.get(i).getUserPassWord()))
-                        if(name==null||name.equals(""))
+                        if(name==null||name.equals("")||name.equals("null"))
                         {
+                            Log.e("名字为空","asd");
                             message.what=1;
                             handler.sendMessage(message);
                             return;
@@ -84,6 +95,7 @@ public class LoginActivity extends Activity {
                         currentUserInfo.setUserPassWord(passWord.getText().toString());
                         message.what=2;
                         message.obj=currentUserInfo;
+
                         handler.sendMessage(message);
                     }
                 }.start();
@@ -97,5 +109,26 @@ public class LoginActivity extends Activity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(KeyEvent.KEYCODE_BACK==keyCode)
+        {
+            Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+            startActivity(intent);
+            LoginActivity.this.finish();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+
     }
 }

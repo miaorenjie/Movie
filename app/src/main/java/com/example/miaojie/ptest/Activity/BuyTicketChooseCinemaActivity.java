@@ -39,6 +39,7 @@ public class BuyTicketChooseCinemaActivity extends Activity {
                 MainActivity.orderInfo.setCinemaName(cinemaInfos.get(position).getCinema_Name());
                 Intent intent=new Intent(BuyTicketChooseCinemaActivity.this,BuyTicketChooseTimeActivity.class);
                 intent.putExtra("position",position);
+                intent.putExtra("MovieName",movieName);
                 startActivity(intent);
             }
         });
@@ -55,25 +56,25 @@ public class BuyTicketChooseCinemaActivity extends Activity {
         CinemaInfo cinemaInfo=new CinemaInfo();
         cinemaInfo.setCinema_Name("奥斯卡长安国际影城");
         cinemaInfo.setCinemaAdress("详细地址：长安区西长安街105号长安中央广场105号A座2楼");
-        cinemaInfo.setRecentlySession("10:00");
+        cinemaInfo.setRecentlySession("最近场次  10:00");
         cinemaInfos.add(cinemaInfo);
 
         CinemaInfo cinemaInfo1=new CinemaInfo();
         cinemaInfo1.setCinema_Name("西安奥斯卡国际影城（长安城南新天地店）");
         cinemaInfo1.setCinemaAdress("详细地址：长安区西长安街与府东一路交叉口东南角负一层");
-        cinemaInfo1.setRecentlySession("14:00");
+        cinemaInfo1.setRecentlySession("最近场次  14:00");
         cinemaInfos.add(cinemaInfo1);
 
         CinemaInfo cinemaInfo2=new CinemaInfo();
         cinemaInfo2.setCinema_Name("中影JMS国际影城灞桥店");
         cinemaInfo2.setCinemaAdress("灞桥区纺渭路3333号华东购物广场三楼");
-        cinemaInfo2.setRecentlySession("16:00");
+        cinemaInfo2.setRecentlySession("最近场次  16:00");
         cinemaInfos.add(cinemaInfo2);
 
         CinemaInfo cinemaInfo3=new CinemaInfo();
-        cinemaInfo3.setCinema_Name("asd");
-        cinemaInfo3.setCinemaAdress("asd");
-        cinemaInfo3.setRecentlySession("asd");
+        cinemaInfo3.setCinema_Name("时代华纳国际影城（洪庆店）");
+        cinemaInfo3.setCinemaAdress("灞桥区洪庆街北段800号");
+        cinemaInfo3.setRecentlySession("最近场次  18:00");
         cinemaInfos.add(cinemaInfo3);
 
 //        CinemaInfo cinemaInfo=new CinemaInfo();

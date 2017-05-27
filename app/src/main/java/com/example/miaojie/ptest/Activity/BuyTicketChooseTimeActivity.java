@@ -25,13 +25,17 @@ import java.util.ArrayList;
 public class BuyTicketChooseTimeActivity extends Activity {
     private RecyclerView recyclerView;
     private ArrayList<MovieSession>movieSessions;
+    private String movieName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.buyticket_choose_time_activity);
+        movieName=getIntent().getStringExtra("MovieName");
         initCinemaInfo();
         recyclerView= (RecyclerView) findViewById(R.id.main_choose_time_recyclerView);
         ChooseTimeAdapter adapter=new ChooseTimeAdapter(this,movieSessions);
+        adapter.setMovieName(movieName);
         adapter.setOnClickListener(new RecyclerViewItemOnClickListener() {
             @Override
             public void OnItemClick(View view) {
@@ -40,6 +44,7 @@ public class BuyTicketChooseTimeActivity extends Activity {
                 MainActivity.orderInfo.setStartTime(movieSessions.get(position).getStartTime());
                 MainActivity.orderInfo.setEndTime(movieSessions.get(position).getEndTime());
                 intent.putExtra("position",position);
+                intent.putExtra("MovieName",movieName);
                 startActivity(intent);
             }
         });

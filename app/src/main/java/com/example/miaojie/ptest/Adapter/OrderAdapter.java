@@ -2,6 +2,7 @@ package com.example.miaojie.ptest.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ public class OrderAdapter extends RecyclerView.Adapter{
     private Context context;
     private ArrayList<OrderInfo>orderInfos;
     private RecyclerViewItemOnClickListener listener;
-
+    private buttonOnClick buttonOnClick;
     public RecyclerViewItemOnClickListener getListener() {
         return listener;
     }
@@ -43,29 +44,52 @@ public class OrderAdapter extends RecyclerView.Adapter{
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(R.layout.order_item,parent,false);
-        if (listener!=null)
-            listener.OnItemClick(view);
+
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener!=null)
+                    listener.OnItemClick(view);
+
+
+            }
+        });
+
         return new OrderHolder(view);
+    }
+
+    public void setButtonOnClick(OrderAdapter.buttonOnClick buttonOnClick) {
+        this.buttonOnClick = buttonOnClick;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         OrderHolder orderHolder= (OrderHolder) holder;
-        orderHolder.orderId.setText(orderInfos.get(position).getOrderId());
+        Log.e("onBindViewHolder",orderInfos.get(position).getOrderId()+"");
+        orderHolder.orderId.setText(orderInfos.get(position).getOrderId()+"");
         orderHolder.startTime.setText(orderInfos.get(position).getStartTime());
         orderHolder.cinemaName.setText(orderInfos.get(position).getCinemaName());
+        orderHolder.movieName.setText(orderInfos.get(position).getMovieName());
         String seats="";
         for(int i=0;i<orderInfos.get(position).getSeatInfos().size();i++)
         {
             seats+=orderInfos.get(position).getSeatInfos().get(i).getSeatX()+
-                    "ее"+orderInfos.get(position).getSeatInfos().get(i).getSeatY()+"ап ";
+                    "ее"+orderInfos.get(position).getSeatInfos().get(i).getSeatY()+"вЫ ";
         }
+        orderHolder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               if(buttonOnClick!=null)
+                   buttonOnClick.onClick(position);
+            }
+        });
         orderHolder.seats.setText(seats);
     }
 
     @Override
     public int getItemCount() {
-        return 15;
+        return orderInfos.size();
     }
 
     class OrderHolder extends RecyclerView.ViewHolder{
@@ -84,5 +108,9 @@ public class OrderAdapter extends RecyclerView.Adapter{
             seats= (TextView) itemView.findViewById(R.id.order_item_seats);
             delete= (Button) itemView.findViewById(R.id.order_item_delete);
         }
+    }
+    public interface buttonOnClick
+    {
+        void onClick(int position);
     }
 }

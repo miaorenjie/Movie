@@ -33,7 +33,11 @@ public class RCadapter extends RecyclerView.Adapter {
     private int TYPE_HEADER=2;
     private int mPosition;
 
-    public RCadapter(Context context,ArrayList list)
+    public void setList(ArrayList<MovieInfo> list) {
+        this.list = list;
+    }
+
+    public RCadapter(Context context, ArrayList list)
     {
         this.context=context;
         this.list=list;

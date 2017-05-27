@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.BBS;
 import com.example.IndentMgr;
 import com.example.miaojie.ptest.Adapter.OrderAdapter;
 import com.example.miaojie.ptest.Adapter.RecyclerViewItemOnClickListener;
@@ -40,30 +41,78 @@ public class OrderInfoActivity extends Activity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new RecycleViewDivider(this,RecyclerView.HORIZONTAL));
+        orderAdapter=new OrderAdapter(OrderInfoActivity.this,orderInfos);
+
+
         handler=new Handler()
         {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                orderAdapter=new OrderAdapter(OrderInfoActivity.this,orderInfos);
-                recyclerView.setAdapter(orderAdapter);
-                orderAdapter.setListener(new RecyclerViewItemOnClickListener() {
-                    @Override
-                    public void OnItemClick(View view) {
-                        int position=recyclerView.getChildAdapterPosition(view);
-                        view.findViewById(R.id.order_item_delete).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                orderInfos.remove(position);
-                                orderAdapter=new OrderAdapter(OrderInfoActivity.this,orderInfos);
-                                recyclerView.setAdapter(orderAdapter);
-                                //此处该有删除数据库
+                if (msg.what==1)
+                {
+                    orderAdapter=new OrderAdapter(OrderInfoActivity.this,orderInfos);
+                    Log.e("OrderInfoActivity",orderInfos.size()+"");
+                    recyclerView.setAdapter(orderAdapter);
+                    orderAdapter.setButtonOnClick(new OrderAdapter.buttonOnClick() {
+                        @Override
+                        public void onClick(int position) {
+                            Log.e("点击了","position");
+                            new Thread()
+                            {
+                                @Override
+                                public void run() {
+                                    super.run();
+                                    IndentMgr.delete(orderInfos.get(position).getOrderId());
+                                    Message message=new Message();
+                                    message.what=2;
+                                    message.obj=new Integer(position);
+                                    handler.sendMessage(message);
+                                    Log.e("点击了","delete");
+                                }
+                            }.start();
+                            //此处该有删除数据库
 
-                            }
-                        });
-                    }
-                });
+
+                        }
+                    });
+
+                }
+                if(msg.what==2){
+                    Log.e("收到了","delete"+orderInfos.size()+"--"+((Integer) msg.obj));
+                    Integer integer= (Integer) msg.obj;
+
+                    orderInfos.remove(integer.intValue());
+
+                    orderAdapter = new OrderAdapter(OrderInfoActivity.this, orderInfos);
+                    orderAdapter.setButtonOnClick(new OrderAdapter.buttonOnClick() {
+                        @Override
+                        public void onClick(int position) {
+                            Log.e("点击了","position");
+                            new Thread()
+                            {
+                                @Override
+                                public void run() {
+                                    super.run();
+                                    IndentMgr.delete(orderInfos.get(position).getOrderId());
+                                    Message message=new Message();
+                                    message.what=2;
+                                    message.obj=new Integer(position);
+                                    handler.sendMessage(message);
+                                    Log.e("点击了","delete");
+                                }
+                            }.start();
+                            //此处该有删除数据库
+
+
+                        }
+                    });
+                    recyclerView.setAdapter(orderAdapter);
+                    Log.e("结束","delete"+orderInfos.size());
+                }
+
             }
+
         };
         getOrderInfos();
     }
@@ -75,6 +124,9 @@ public class OrderInfoActivity extends Activity {
                 orderInfos=new ArrayList<OrderInfo>();
 
                 ArrayList<ArrayList>allOrderInfo=IndentMgr.get();
+                if(allOrderInfo==null)
+                    return;
+                Log.e("OrderInfo",allOrderInfo.size()+"");
                 for(int i=0;i<allOrderInfo.size();i++)
                 {
 
@@ -82,6 +134,7 @@ public class OrderInfoActivity extends Activity {
 
                     OrderInfo orderInfo=new OrderInfo();
                     orderInfo.setUserName((String) temp.get(9));
+                    Log.e("OrderInfo",orderInfo.getUserName()+"--"+MainActivity.userInfo.getUserName());
                     if(!orderInfo.getUserName().equals(MainActivity.userInfo.getUserName()))
                         continue;
                     orderInfo.setOrderId((Integer) temp.get(0));
@@ -105,7 +158,9 @@ public class OrderInfoActivity extends Activity {
                     orderInfo.setSeatInfos(seatInfos);
                     orderInfos.add(orderInfo);
                 }
-                handler.sendMessage(new Message());
+                Message message=new Message();
+                message.what=1;
+                handler.sendMessage(message);
             }
         }.start();
 
